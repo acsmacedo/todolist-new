@@ -1,6 +1,7 @@
 <template>
   <header class="header">
-    HEADER
+    <h1>Tarefas</h1>
+    <p>Organize suas tarefas e torne-se mais produtivo. Uma tarefa cumprida motivará ainda mais o seu dia!</p>
   </header>
 </template>
 

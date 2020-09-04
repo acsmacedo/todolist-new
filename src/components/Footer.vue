@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    FOOTER
+    <p>Desenvolvido por Anderson Macedo.</p>
   </footer>
 </template>
 
@@ -11,5 +11,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.footer {
+ 
+}
 </style>

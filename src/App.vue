@@ -1,9 +1,10 @@
 <template>
   <div class="app">
-    <Header />
+    
     <section class="todolist">
+      <Header />
       <InsertTask />
-      <FilterSort />
+      <FilterSort v-if="taskList.length > 2" />
       <TaskList />
     </section>
     <Footer />
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Header from './components/Header'
 import InsertTask from './components/InsertTask'
 import FilterSort from './components/FilterSort'
@@ -25,6 +27,9 @@ export default {
     FilterSort,
     TaskList,
     Footer
+  },
+  computed: {
+    ...mapState(['taskList'])
   }
 }
 </script>
@@ -60,5 +65,13 @@ export default {
     color: inherit;
     list-style: none;
     text-decoration: inherit;
+  }
+
+  .app {
+    max-width: 700px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 1rem;
+    justify-content: space-between;
   }
 </style>
