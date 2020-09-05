@@ -13,16 +13,25 @@
       <option value="alphabet">Alfabeto</option>
       <option value="deadline">Prazo</option>
     </select>
+    <button v-on:click="changeInvert" :class="{ active: invert }">Invert</button>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
   name: 'FilterSort',
+  data: function() {
+    return {
+      colorInvert: {color: 'var(--text-active)'}
+    }
+  },
+  computed: {
+    ...mapState(['invert'])
+  },
   methods: {
-    ...mapMutations(['changeFilter', 'changeSort']),
+    ...mapMutations(['changeFilter', 'changeSort', 'changeInvert']),
     change(e) {
       if (e.target.id === 'filter') {
         this.changeFilter(e.target.value);
@@ -38,18 +47,25 @@ export default {
 <style scoped lang="scss">
   .filter-sort {
     flex-direction: row;
-    margin-top: 2rem;
-    select {
+    select, button {
       background-color: var(--background-color);
       border: 0.0625rem solid var(--text-inactive);
-      padding: 0 1rem;
+      padding: 0 0.5rem;
       outline: none;
       height: 2.5rem;
       color: var(--text-active);
-      width: calc(50% - 0.25rem);
     }
-    select:first-child {
+    select {
       margin-right: 0.5rem;
+      width: calc(37.5% - 0.5rem);
+    }
+    button {
+      width: 25%;
+      align-self: center;
+      color: var(--text-inactive);
+      &.active {
+        color: var(--text-active);
+      }
     }
   }
 </style>

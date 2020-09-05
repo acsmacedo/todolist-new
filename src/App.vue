@@ -1,6 +1,5 @@
 <template>
-  <div class="app light-mode">
-    
+  <div class="app">
     <section class="todolist">
       <Header />
       <InsertTask />
@@ -29,9 +28,12 @@ export default {
     Footer
   },
   watch: {
-    taskList(newValue) {
-      const tasks = JSON.stringify(newValue);
-      window.localStorage.setItem('tasks', tasks);
+    taskList: {
+      handler: function (newValue) { 
+        const tasks = JSON.stringify(newValue);
+        window.localStorage.setItem('tasks', tasks);
+      },
+      deep: true
     }
   },
   computed: {
@@ -57,6 +59,16 @@ export default {
     box-sizing: border-box;
   }
 
+  body {
+    --background-color: #FFFFFF;
+    --text-active: #333333;
+    --text-inactive: #DDDDDD;
+    &.dark-mode {
+      --background-color: #333333;
+      --text-active: #FFFFFF;
+      --text-inactive: #555555;
+    }
+  }
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -91,17 +103,5 @@ export default {
     padding: 1rem;
     justify-content: space-between;
     
-  }
-
-  .light-mode {
-    --background-color: #FFFFFF;
-    --text-active: #333333;
-    --text-inactive: #DDDDDD;
-  }
-
-  .dark-mode {
-    --background-color: #333333;
-    --text-active: #FFFFFF;
-    --text-inactive: #555555;
   }
 </style>

@@ -28,6 +28,7 @@ export default {
 
 <style scoped lang="scss">
   .form {
+    margin-bottom: 2rem;
     input, select, button {
       background-color: var(--background-color);
       border: 0.0625rem solid var(--text-inactive);

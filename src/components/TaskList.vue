@@ -1,8 +1,8 @@
 <template>
-  <ul class="task-list">
-    <template v-if="sort">
+  <ul class="task-list" v-if="invert.length > 0">
+    <template>
       <TaskItem 
-      v-for="item in sort"
+      v-for="item in invert"
       :key="item.id"
       :description="item.description"
       :deadline="item.deadline"
@@ -14,6 +14,11 @@
      />
     </template>
   </ul>
+  <div class="list-empty" v-else>
+    <i class="las la-calendar-week"></i>
+    <p>Sua lista de tarefas está vazia.</p>
+    <span>Que tal aproveitar o momento para organizar sua agenda!</span>
+  </div>
 </template>
 
 <script>
@@ -26,12 +31,24 @@ export default {
     TaskItem
   },
   computed: {
-    ...mapGetters(['sort'])
+    ...mapGetters(['invert'])
   }
-  
 }
 </script>
 
 <style scoped lang="scss">
-
+  .list-empty {
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-active);
+    i {
+      font-size: 5em;
+      border-bottom: 0.2rem solid var(--text-active);
+      align-self: center;
+    }
+    p {
+      font-weight: 900;
+      margin-top: 0.75rem;
+    }
+  }
 </style>

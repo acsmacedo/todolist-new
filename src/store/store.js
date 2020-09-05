@@ -8,7 +8,8 @@ export default new Vuex.Store({
     taskList: [],
     filter: 'none',
     sort: 'none',
-    invert: false
+    invert: false,
+    modeColor: true
   },
   getters: {
     filter(state) {
@@ -42,6 +43,11 @@ export default new Vuex.Store({
         console.log(state.taskList)
         return tempFilter.sort((a,b) => (a.deadlineNumbers > b.deadlineNumbers) ? 1 : ((b.deadlineNumbers > a.deadlineNumbers) ? -1 : 0));
       }
+    },
+    invert(state, getters) {
+      const tempInvert = [...getters.sort];
+      if (state.invert === false) return tempInvert.reverse();
+      if (state.invert === true) return tempInvert;
     }
   },
   mutations: {
@@ -95,6 +101,12 @@ export default new Vuex.Store({
     },
     changeSort(state, sort) {
       state.sort = sort;
+    },
+    changeInvert(state) {
+      state.invert = !state.invert;
+    },
+    changeModeColor(state) {
+      state.modeColor = !state.modeColor;
     }
   }
 })
