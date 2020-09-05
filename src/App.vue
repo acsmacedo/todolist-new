@@ -34,19 +34,28 @@ export default {
         window.localStorage.setItem('tasks', tasks);
       },
       deep: true
+    },
+    modeColor() {
+      window.localStorage.setItem('modeColor', this.modeColor);
     }
   },
   computed: {
-    ...mapState(['taskList'])
+    ...mapState(['taskList', 'modeColor'])
   },
   methods: {
-    ...mapMutations(['loadTasks'])
+    ...mapMutations(['loadTasks', 'changeModeColor', 'updateWarning'])
   },
   created() {
     if(window.localStorage.getItem('tasks')) {
       const json = window.localStorage.getItem('tasks');
       const tasks = JSON.parse(json);
       this.loadTasks(tasks);
+    }
+    this.updateWarning();
+  },
+  mounted() {
+    if(window.localStorage.getItem('modeColor') === 'true') {
+      this.changeModeColor();
     }
   }
 }
@@ -60,32 +69,34 @@ export default {
   }
 
   body {
-    --background-color: #FFFFFF;
+    --background-body: #F6F6F6;
+    --background-items: #FFFFFF;
     --text-active: #333333;
-    --text-inactive: #DDDDDD;
+    --text-inactive: #CCCCCC;
+    --border-color: #BBBBBB;
     &.dark-mode {
-      --background-color: #333333;
-      --text-active: #FFFFFF;
+      --background-body: #202020;
+      --background-items: #333333;
+      --text-active: #F6F6F6;
       --text-inactive: #555555;
+      --border-color: #777777;
     }
   }
+
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    background-color: var(--background-color);
+    background-color: var(--background-body);
   }
 
-  header, nav, aside, section, 
-  article, main, div, footer {
+  header, section, div, footer {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     overflow: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6, p, pre,
-  ul, ol, li, dl, dt, dd, blockquote,
-  a, span {
+  h1, p, ul, ol, li, a, span {
     margin: 0;
     padding: 0;
     font-size: inherit;
@@ -96,12 +107,15 @@ export default {
     text-decoration: inherit;
   }
 
+  button, select, input {
+    font-size: inherit;
+  }
+
   .app {
     max-width: 700px;
     min-height: 100vh;
     margin: 0 auto;
     padding: 1rem;
     justify-content: space-between;
-    
   }
 </style>

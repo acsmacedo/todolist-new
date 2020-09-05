@@ -1,5 +1,5 @@
 <template>
-  <ul class="task-list" v-if="invert.length > 0">
+  <ul class="task-list" v-if="taskList.length > 0">
     <template>
       <TaskItem 
       v-for="item in invert"
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import TaskItem from './TaskItem'
 
 export default {
@@ -31,6 +31,7 @@ export default {
     TaskItem
   },
   computed: {
+    ...mapState(['taskList']),
     ...mapGetters(['invert'])
   }
 }
@@ -41,6 +42,7 @@ export default {
     text-align: center;
     font-size: 0.9em;
     color: var(--text-active);
+    margin-top: 0.5rem;
     i {
       font-size: 5em;
       border-bottom: 0.2rem solid var(--text-active);

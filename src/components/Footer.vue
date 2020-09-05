@@ -1,6 +1,6 @@
 <template>
   <footer class="footer">
-    <p>Desenvolvido por <a href="">Anderson Macedo</a>.</p>
+    <p>Desenvolvido por <a href="https://github.com/acsmacedo">Anderson Macedo</a></p>
   </footer>
 </template>
 
@@ -13,12 +13,14 @@ export default {
 <style scoped lang="scss">
   .footer {
     padding: 1rem 0;
-    border-top: 0.0625rem solid var(--text-inactive);
+    margin-top: 0.5rem;
+    border-top: 0.0625rem solid var(--border-color);
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: var(--text-active);
     a {
       font-weight: 900;
+      border-bottom: 0.0625rem dotted var(--text-active);
     }
   }
 </style>

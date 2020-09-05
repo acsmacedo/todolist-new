@@ -13,31 +13,36 @@
       <option value="alphabet">Alfabeto</option>
       <option value="deadline">Prazo</option>
     </select>
-    <button v-on:click="changeInvert" :class="{ active: invert }">Invert</button>
+    
+    <button v-on:click="changeInvert">Inverter</button>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'FilterSort',
-  data: function() {
-    return {
-      colorInvert: {color: 'var(--text-active)'}
-    }
-  },
-  computed: {
-    ...mapState(['invert'])
-  },
   methods: {
     ...mapMutations(['changeFilter', 'changeSort', 'changeInvert']),
     change(e) {
-      if (e.target.id === 'filter') {
-        this.changeFilter(e.target.value);
+      if (e.target.id === 'filter') { 
+        this.changeFilter(e.target.value); 
+
+        if (e.target.value !== 'none') {
+          document.querySelector('#filter').firstElementChild.innerHTML = 'Restaurar';
+        } else {
+          document.querySelector('#filter').firstElementChild.innerHTML = 'Filtrar';
+        }
       }
-      if (e.target.id === 'sort') {
-        this.changeSort(e.target.value);
+      if (e.target.id === 'sort') { 
+        this.changeSort(e.target.value); 
+
+        if (e.target.value !== 'none') {
+          document.querySelector('#sort').firstElementChild.innerHTML = 'Restaurar';
+        } else {
+          document.querySelector('#sort').firstElementChild.innerHTML = 'Ordenar';
+        }
       }
     }
   }
@@ -47,9 +52,11 @@ export default {
 <style scoped lang="scss">
   .filter-sort {
     flex-direction: row;
+    margin-top: 0.5rem;
+    font-size: 0.9em;
     select, button {
-      background-color: var(--background-color);
-      border: 0.0625rem solid var(--text-inactive);
+      background-color: var(--background-items);
+      border: 0.0625rem solid var(--border-color);
       padding: 0 0.5rem;
       outline: none;
       height: 2.5rem;
@@ -63,7 +70,9 @@ export default {
       width: 25%;
       align-self: center;
       color: var(--text-inactive);
+      text-align: center;
       &.active {
+        background-color: var(--text-inactive);
         color: var(--text-active);
       }
     }
