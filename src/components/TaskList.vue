@@ -1,8 +1,8 @@
 <template>
   <ul class="task-list">
-    <template v-if="taskList">
+    <template v-if="sort">
       <TaskItem 
-      v-for="item in taskList"
+      v-for="item in sort"
       :key="item.id"
       :description="item.description"
       :deadline="item.deadline"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 import TaskItem from './TaskItem'
 
 export default {
@@ -26,7 +26,7 @@ export default {
     TaskItem
   },
   computed: {
-    ...mapState(['taskList'])
+    ...mapGetters(['sort'])
   }
   
 }

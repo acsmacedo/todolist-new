@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app light-mode">
     
     <section class="todolist">
       <Header />
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import Header from './components/Header'
 import InsertTask from './components/InsertTask'
 import FilterSort from './components/FilterSort'
@@ -28,8 +28,24 @@ export default {
     TaskList,
     Footer
   },
+  watch: {
+    taskList(newValue) {
+      const tasks = JSON.stringify(newValue);
+      window.localStorage.setItem('tasks', tasks);
+    }
+  },
   computed: {
     ...mapState(['taskList'])
+  },
+  methods: {
+    ...mapMutations(['loadTasks'])
+  },
+  created() {
+    if(window.localStorage.getItem('tasks')) {
+      const json = window.localStorage.getItem('tasks');
+      const tasks = JSON.parse(json);
+      this.loadTasks(tasks);
+    }
   }
 }
 </script>
@@ -44,6 +60,7 @@ export default {
   body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
   }
 
   header, nav, aside, section, 
@@ -73,5 +90,18 @@ export default {
     margin: 0 auto;
     padding: 1rem;
     justify-content: space-between;
+    
+  }
+
+  .light-mode {
+    --background-color: #FFFFFF;
+    --text-active: #333333;
+    --text-inactive: #DDDDDD;
+  }
+
+  .dark-mode {
+    --background-color: #333333;
+    --text-active: #FFFFFF;
+    --text-inactive: #555555;
   }
 </style>

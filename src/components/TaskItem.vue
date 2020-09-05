@@ -1,12 +1,12 @@
 <template>
-  <li :class="label" v-on:click="returnId" :id="id">
+  <li :style="colorLabel" v-on:click="changes" :id="id">
     <div :class="{ ischeck: isCheck }">
       <span class="check">{{ deadline }}</span>
       <p class="check">{{ description }}</p>
     </div>
     <div class="icon">
       <div :class="{ isimportant: isImportant }"><i class="las la-skull-crossbones important"></i></div>
-      <div :class="{ iswarning: isWarning }"><i class="las la-bomb"></i></div>
+      <div :class="{ iswarning: isWarning }"><i class="las la-bomb warning"></i></div>
       <div><i class="las la-times close"></i></div>
     </div>
   </li>
@@ -17,18 +17,29 @@ import { mapMutations } from 'vuex'
 
 export default {
   name: 'TaskItem',
+  computed: {
+    colorLabel() {
+      if (this.label === 'color1') {  return { borderColor: 'red' } }
+      else if (this.label === 'color2') {  return { borderColor: 'orange' } }
+      else if (this.label === 'color3') {  return { borderColor: 'yellow' } }
+      else if (this.label === 'color4') {  return { borderColor: 'green' } }
+      else if (this.label === 'color5') {  return { borderColor: 'blue' } }
+      else if (this.label === 'color6') {  return { borderColor: 'purple' } }
+      else {  return { borderColor: 'pink' } }
+    }
+  },
   props: {
+    id: Number,
     description: String,
     deadline: String,
     label: String,
-    id: Number,
     isImportant: Boolean,
     isCheck: Boolean,
     isWarning: Boolean
   },
   methods: {
     ...mapMutations(['removeTask', 'changeImportant', 'changeCheck']),
-    returnId(e) {
+    changes(e) {
       if (e.target.className.includes('close')) { 
         this.removeTask(this.id);
       }
@@ -41,7 +52,6 @@ export default {
         this.changeCheck(this.id);
       }
     }
-    
   }
 }
 </script>
@@ -57,16 +67,14 @@ export default {
   }
 
   .ischeck {
-    color: blue;
+    text-decoration: line-through;
+    color: var(--text-inactive);
   }
 
   .isimportant, .iswarning {
     i {
-      color: red;
+      color: var(--text-active);
     }
-  }
-  .text {
-    
   }
   .icon {
     flex-direction: row;
@@ -79,12 +87,17 @@ export default {
   span {
     font-size: 0.6em;
     margin-bottom: 0.2rem;
-    color: #DDDDDD;
   }
 
   i {
     font-size: 1.2em;
     color: #DDDDDD;
     padding-left: 0.5rem;  
+  }
+
+  .close, .important {
+    &:hover {
+      color: var(--text-active);
+    }
   }
 </style>
