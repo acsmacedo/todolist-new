@@ -19,13 +19,14 @@ export default {
   name: 'TaskItem',
   computed: {
     colorLabel() {
-      if (this.label === 'color1') {  return { borderColor: '#EB2F4B' } }
-      else if (this.label === 'color2') {  return { borderColor: '#FA973F' } }
-      else if (this.label === 'color3') {  return { borderColor: '#FFE511' } }
+      if (this.label === 'color7') {  return { borderColor: '#EB2F4B' } }
+      else if (this.label === 'color6') {  return { borderColor: '#FA973F' } }
+      else if (this.label === 'color5') {  return { borderColor: '#FFE511' } }
       else if (this.label === 'color4') {  return { borderColor: '#9CD95F' } }
-      else if (this.label === 'color5') {  return { borderColor: '#00D5ED' } }
-      else if (this.label === 'color6') {  return { borderColor: '#7B00FF' } }
-      else {  return { borderColor: '#F272C5' } }
+      else if (this.label === 'color3') {  return { borderColor: '#00D5ED' } }
+      else if (this.label === 'color2') {  return { borderColor: '#7B00FF' } }
+      else if (this.label === 'color1') {  return { borderColor: '#F272C5' } }
+      else {  return { borderColor: 'var(--border-color)' } }
     }
   },
   props: {
@@ -60,15 +61,12 @@ export default {
   .task-item {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     border: 0.0625rem solid var(--border-color);
     border-left-width: 0.4rem;
-    margin: 0.5rem 0;
+    margin: 0.75rem 0;
     color: var(--text-active);
     background-color: var(--background-body);
-    &:hover {
-      background-color: var(--background-items);
-    }
     span {
       font-size: 0.6em;
       margin-bottom: 0.2rem;

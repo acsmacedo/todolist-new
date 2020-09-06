@@ -30,7 +30,7 @@ export default {
         this.changeFilter(e.target.value); 
 
         if (e.target.value !== 'none') {
-          document.querySelector('#filter').firstElementChild.innerHTML = 'Restaurar';
+          document.querySelector('#filter').firstElementChild.innerHTML = 'Remover';
         } else {
           document.querySelector('#filter').firstElementChild.innerHTML = 'Filtrar';
         }
@@ -39,11 +39,13 @@ export default {
         this.changeSort(e.target.value); 
 
         if (e.target.value !== 'none') {
-          document.querySelector('#sort').firstElementChild.innerHTML = 'Restaurar';
+          document.querySelector('#sort').firstElementChild.innerHTML = 'Remover';
         } else {
           document.querySelector('#sort').firstElementChild.innerHTML = 'Ordenar';
         }
       }
+
+      e.target.value !== 'none' ? e.target.classList.add('active') : e.target.classList.remove('active');
     }
   }
 }
@@ -52,29 +54,36 @@ export default {
 <style scoped lang="scss">
   .filter-sort {
     flex-direction: row;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: -0.5rem;
     font-size: 0.9em;
     select, button {
-      background-color: var(--background-items);
+      background-color: var(--background-body);
       border: 0.0625rem solid var(--border-color);
       padding: 0 0.5rem;
       outline: none;
       height: 2.5rem;
-      color: var(--text-active);
+      color: var(--border-color);
+      &:focus {
+        border: 0.0625rem solid var(--text-active);
+      }
+      &.active {
+        color: var(--text-active);
+        background-color: var(--background-items);
+        border: 0.0625rem solid var(--text-active);
+      }
     }
     select {
       margin-right: 0.5rem;
       width: calc(37.5% - 0.5rem);
+      option {
+        color: var(--text-active);
+        background-color: var(--background-items);
+      }
     }
     button {
       width: 25%;
       align-self: center;
-      color: var(--text-inactive);
-      text-align: center;
-      &.active {
-        background-color: var(--text-inactive);
-        color: var(--text-active);
-      }
     }
   }
 </style>

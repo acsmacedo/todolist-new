@@ -31,8 +31,9 @@ export default new Vuex.Store({
         return getters.filter;
       }
       if (state.sort === 'color') {
-        const tempFilter = [...getters.filter]
-        return tempFilter.sort((a,b) => (a.label > b.label) ? 1 : ((b.label > a.label) ? -1 : 0)); 
+        const tempFilter = [...getters.filter];
+        tempFilter.sort((a,b) => (a.label > b.label) ? 1 : ((b.label > a.label) ? -1 : 0)); 
+        return tempFilter.reverse();
       }
       if (state.sort === 'alphabet') {
         const tempFilter = [...getters.filter];
@@ -77,10 +78,29 @@ export default new Vuex.Store({
 
       state.taskList.push(task);
       e.preventDefault();
-      
+      e.target.description.value = '';
+
+      const msg = document.createElement('div');
+      const container = document.querySelector('.msg');
+      msg.innerText = `A tarefa "${ description }" foi inserida!`;
+      container.appendChild(msg);
+      setTimeout(() => {
+        container.removeChild(msg);
+      }, 2000)
     },
     removeTask(state, id) {
       const filtro = state.taskList.filter( item => item.id !== id );
+      state.taskList.forEach( el => {
+        if (el.id === id) {
+          const msg = document.createElement('div');
+          const container = document.querySelector('.msg');
+          msg.innerText = `A tarefa "${ el.description }" foi removida!`;
+          container.appendChild(msg);
+          setTimeout(() => {
+            container.removeChild(msg);
+          }, 2000)
+        }  
+      })
       state.taskList = filtro;
     },
     changeImportant(state, id) {
