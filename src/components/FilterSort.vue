@@ -65,8 +65,11 @@ export default {
       outline: none;
       height: 2.5rem;
       color: var(--border-color);
-      &:focus {
-        border: 0.0625rem solid var(--text-active);
+      @media (min-device-width: 1024px) {
+        &:focus {
+          border: 0.0625rem solid var(--text-active);
+          background-color: var(--background-items);
+        }
       }
       &.active {
         color: var(--text-active);
