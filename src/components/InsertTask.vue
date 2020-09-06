@@ -30,6 +30,7 @@ export default {
         e.target.classList.remove('active');
       }
       e.target.blur();
+      document.querySelector('#deadline').blur();
     }
   }
 }
@@ -56,9 +57,9 @@ export default {
         color: var(--border-color);
       }
       &:focus {
-        border: 0.0625rem solid var(--text-active);
         color: var(--text-active);
         background-color: var(--background-items);
+        border: 0.0625rem solid var(--text-active);
       }
       &.active {
         color: var(--text-active);
@@ -94,10 +95,10 @@ export default {
     input[type="date"] {
       width: calc(50% - 0.25rem);
       margin: 0.5rem 0;
-      color: var(--background-body);
       &::-webkit-datetime-edit-day-field,
       &::-webkit-datetime-edit-month-field,
-      &::-webkit-datetime-edit-year-field {
+      &::-webkit-datetime-edit-year-field,
+      &::-webkit-datetime-edit-text {
         color: transparent;
         background-color: transparent;
       }
@@ -105,39 +106,41 @@ export default {
         content: "Prazo";
         color: var(--border-color);
       }
-      &::after {
-        @media (min-device-width: 1024px) {
+      &::-webkit-calendar-picker-indicator {
+        margin: 0;
+      }
+      &.active {
+        color: var(--text-active);
+        &::-webkit-datetime-edit-day-field,
+        &::-webkit-datetime-edit-month-field,
+        &::-webkit-datetime-edit-year-field,
+        &::-webkit-datetime-edit-text {
+          color: inherit;
+        }
+        &::before {
+          content: "";
+        }
+      }
+      @media (min-device-width: 1024px) {
+        &::after {
           content: "\1F4C5";
           color: var(--border-color);
           position: absolute;
           right: 0.8rem;
           font-size: 0.8em;
         }
-      }
-      &::-webkit-calendar-picker-indicator {
-        margin: 0;
-        @media (min-device-width: 1024px) {
+        &::-webkit-calendar-picker-indicator {
           opacity: 0;
-          
-          margin-left: 0rem;
+          margin: 0;
+          padding: 0;
           z-index: 10;
         }
+        &.active {
+          &::after {
+            color: var(--text-active);
+          }
+        }
       }
-      &.active {
-        color: var(--text-active);
-        &::-webkit-datetime-edit-day-field,
-        &::-webkit-datetime-edit-month-field,
-        &::-webkit-datetime-edit-year-field {
-          color: inherit;
-          background-color: transparent;
-        }
-        &::before {
-          content: "";
-        }
-        &::after {
-          color: var(--text-active);
-        }
-      }  
     }
     @media (min-width: 600px) {
       input[type="date"], select {

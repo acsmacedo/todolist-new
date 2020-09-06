@@ -73,8 +73,8 @@ export default {
     --background-body: #F6F6F6;
     --background-items: #FFFFFF;
     --text-active: #333333;
-    --text-inactive: #E0E0E0;
-    --border-color: #CECECE;
+    --text-inactive: #D0D0D0;
+    --border-color: #BEBEBE;
     &.dark-mode {
       --background-body: #202020;
       --background-items: #202020;
@@ -126,7 +126,7 @@ export default {
     right: 0;
     left: 0;
     margin: 1rem auto;
-    width: 90%;
+    width: 100%;
     text-align: center;
     background-color: var(--text-active);
     color: var(--text-inactive);
@@ -135,6 +135,7 @@ export default {
     z-index: 10;
     > div {
       padding: 0.5rem;
+      border: 0.0625rem solid var(--background-body);
     }
   }
 </style>

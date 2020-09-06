@@ -31,7 +31,7 @@ export default {
       text-transform: uppercase;
       align-self: center;
       border-bottom: 0.0625rem solid var(--border-color);
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.2rem;
       margin-bottom: 1rem;
     }
     > p {

@@ -119,7 +119,7 @@ export default new Vuex.Store({
       const container = document.querySelector('.msg');
       msg.innerText = state.taskList[filtro].isCheck ? 
         `A tarefa "${ state.taskList[filtro].description }" foi concluída!` :
-        `A tarefa "${ state.taskList[filtro].description }" está novamente pendente!`;
+        `A tarefa "${ state.taskList[filtro].description }" está pendente!`;
       container.appendChild(msg);
       setTimeout(() => {
         container.removeChild(msg);
