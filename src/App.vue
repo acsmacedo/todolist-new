@@ -3,10 +3,11 @@
     <section class="todolist">
       <Header />
       <InsertTask />
-      <FilterSort v-if="taskList.length > 2" />
+      <FilterSort v-if="taskList.length > 1" />
       <TaskList />
     </section>
     <Footer />
+    <div class="msg"></div>
   </div>
 </template>
 
@@ -73,7 +74,7 @@ export default {
     --background-items: #FFFFFF;
     --text-active: #333333;
     --text-inactive: #E0E0E0;
-    --border-color: #BBBBBB;
+    --border-color: #CECECE;
     &.dark-mode {
       --background-body: #202020;
       --background-items: #202020;
@@ -117,5 +118,23 @@ export default {
     margin: 0 auto;
     padding: 1rem;
     justify-content: space-between;
+  }
+
+  .msg {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 1rem auto;
+    width: 90%;
+    text-align: center;
+    background-color: var(--text-active);
+    color: var(--text-inactive);
+    font-size: 0.8em;
+    font-weight: 600;
+    z-index: 10;
+    > div {
+      padding: 0.5rem;
+    }
   }
 </style>

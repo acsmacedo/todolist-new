@@ -1,7 +1,6 @@
 <template>
   <ul class="task-list" v-if="taskList.length > 0">
-    <template>
-      <TaskItem 
+    <TaskItem 
       v-for="item in invert"
       :key="item.id"
       :description="item.description"
@@ -11,9 +10,9 @@
       :isCheck="item.isCheck"
       :isImportant="item.isImportant"
       :isWarning="item.isWarning"
-     />
-    </template>
+    />
   </ul>
+  
   <div class="list-empty" v-else>
     <i class="las la-calendar-week"></i>
     <p>Sua lista de tarefas está vazia.</p>
