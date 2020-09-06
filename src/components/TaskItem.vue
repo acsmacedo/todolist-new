@@ -5,7 +5,7 @@
       <p class="check">{{ description }}</p>
     </div>
     <div class="icon">
-      <div :class="{ isimportant: isImportant }"><i class="las la-star-of-life important"></i></div>
+      <div :class="{ isimportant: isImportant }"><i class='bx bx-star important'></i></div>
       <div :class="{ iswarning: isWarning }"><i class="las la-exclamation-triangle warning"></i></div>
       <div><i class="las la-times close"></i></div>
     </div>
@@ -77,7 +77,7 @@ export default {
     i {
       font-size: 1.2em;
       color: var(--text-inactive);
-      padding-left: 0.5rem;  
+      padding-left: 0.4rem;  
     }
     .ischeck {
       text-decoration: line-through;
