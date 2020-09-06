@@ -30,7 +30,6 @@ export default {
         e.target.classList.remove('active');
       }
       e.target.blur();
-      document.querySelector('#deadline').blur();
     }
   }
 }
@@ -95,6 +94,11 @@ export default {
     input[type="date"] {
       width: calc(50% - 0.25rem);
       margin: 0.5rem 0;
+      &:focus {
+        color: var(--text-active);
+        background-color: var(--background-body);
+        border: 0.0625rem solid var(--border-color);
+      }
       &::-webkit-datetime-edit-day-field,
       &::-webkit-datetime-edit-month-field,
       &::-webkit-datetime-edit-year-field,
@@ -122,6 +126,11 @@ export default {
         }
       }
       @media (min-device-width: 1024px) {
+        &:focus {
+          color: var(--text-active);
+          background-color: var(--background-items);
+          border: 0.0625rem solid var(--text-active);
+        }
         &::after {
           content: "\1F4C5";
           color: var(--border-color);

@@ -79,6 +79,7 @@ export default new Vuex.Store({
       state.taskList.push(task);
       e.preventDefault();
       e.target.description.value = '';
+      e.target.description.classList.remove('active');
 
       const msg = document.createElement('div');
       const container = document.querySelector('.msg');
