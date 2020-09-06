@@ -72,14 +72,14 @@ export default {
     --background-body: #F6F6F6;
     --background-items: #FFFFFF;
     --text-active: #333333;
-    --text-inactive: #CCCCCC;
+    --text-inactive: #E0E0E0;
     --border-color: #BBBBBB;
     &.dark-mode {
       --background-body: #202020;
-      --background-items: #333333;
+      --background-items: #202020;
       --text-active: #F6F6F6;
       --text-inactive: #555555;
-      --border-color: #777777;
+      --border-color: #888888;
     }
   }
 
@@ -96,7 +96,7 @@ export default {
     overflow: hidden;
   }
 
-  h1, p, ul, ol, li, a, span {
+  h1, p, ul, ol, li, a, span, button, select, input {
     margin: 0;
     padding: 0;
     font-size: inherit;

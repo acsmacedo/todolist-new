@@ -35,10 +35,13 @@ export default {
       margin-bottom: 1rem;
     }
     > p {
-      max-width: 400px;
+      max-width: 80%;
       margin: 0 auto;
       font-size: 0.9em;
-      line-height: 1.7em;
+      line-height: 1.5em;
+      @media (min-width: 500px) {
+        max-width: 400px;
+      }
     }
   }
 
@@ -64,7 +67,7 @@ export default {
     > span.active {
       border: 0.2rem solid var(--text-active);
       span {
-        width: 1.4rem;
+        width: 1.45rem;
       } 
     }
   }

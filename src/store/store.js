@@ -31,8 +31,9 @@ export default new Vuex.Store({
         return getters.filter;
       }
       if (state.sort === 'color') {
-        const tempFilter = [...getters.filter]
-        return tempFilter.sort((a,b) => (a.label > b.label) ? 1 : ((b.label > a.label) ? -1 : 0)); 
+        const tempFilter = [...getters.filter];
+        tempFilter.sort((a,b) => (a.label > b.label) ? 1 : ((b.label > a.label) ? -1 : 0)); 
+        return tempFilter.reverse();
       }
       if (state.sort === 'alphabet') {
         const tempFilter = [...getters.filter];
@@ -77,7 +78,7 @@ export default new Vuex.Store({
 
       state.taskList.push(task);
       e.preventDefault();
-      
+      e.target.description.value = '';
     },
     removeTask(state, id) {
       const filtro = state.taskList.filter( item => item.id !== id );

@@ -38,14 +38,24 @@ export default {
 </script>
 
 <style scoped lang="scss">
+  .task-list {
+    margin-top: 0.5rem;
+  }
+
   .list-empty {
     text-align: center;
     font-size: 0.9em;
-    color: var(--text-active);
+    line-height: 1.5em;
+    color: var(--border-color);
+    max-width: 80%;
+    margin: 0 auto;
     margin-top: 0.5rem;
+    @media (min-width: 500px) {
+      max-width: 300px;
+    }
     i {
       font-size: 5em;
-      border-bottom: 0.2rem solid var(--text-active);
+      border-bottom: 0.2rem solid var(--border-color);
       align-self: center;
     }
     p {
