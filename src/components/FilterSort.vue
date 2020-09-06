@@ -44,8 +44,9 @@ export default {
           document.querySelector('#sort').firstElementChild.innerHTML = 'Ordenar';
         }
       }
-
+      
       e.target.value !== 'none' ? e.target.classList.add('active') : e.target.classList.remove('active');
+      e.target.blur();
     }
   }
 }
