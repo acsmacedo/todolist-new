@@ -40,8 +40,7 @@ export default new Vuex.Store({
         return tempFilter.sort((a,b) => (a.description.toUpperCase() > b.description.toUpperCase()) ? 1 : ((b.description.toUpperCase() > a.description.toUpperCase()) ? -1 : 0)); 
       }
       if (state.sort === 'deadline') {
-        const tempFilter = [...getters.filter]
-        console.log(state.taskList)
+        const tempFilter = [...getters.filter];
         tempFilter.sort((a,b) => (a.deadlineNumbers > b.deadlineNumbers) ? 1 : ((b.deadlineNumbers > a.deadlineNumbers) ? -1 : 0));
         return tempFilter.reverse();
       }
@@ -54,12 +53,13 @@ export default new Vuex.Store({
   },
   mutations: {
     insertTask(state, e) {
+      e.preventDefault();
       const id = Date.now();
       const tempDescription = e.target.description.value;
       const description = tempDescription ? tempDescription : 'Tarefa sem nome';
       
       
-      const tempDate = e.target.deadline.value.replaceAll('-', ',');
+      const tempDate = e.target.deadline.value.replace(/-/g, ',');
       const date = (new Date(tempDate)).toLocaleDateString();
       const deadlineNumbers = e.target.deadline.value ? (new Date(tempDate)).getTime() : Infinity;
       const deadline =  e.target.deadline.value ? date : '';
@@ -77,7 +77,7 @@ export default new Vuex.Store({
       const task = { id, description, deadline, deadlineNumbers, label, isImportant, isCheck, isWarning };
 
       state.taskList.push(task);
-      e.preventDefault();
+      
       e.target.description.value = '';
       e.target.description.classList.remove('active');
 

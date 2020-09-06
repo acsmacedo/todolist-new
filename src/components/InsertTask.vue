@@ -38,7 +38,7 @@ export default {
 <style scoped lang="scss">
   .form {
     margin-bottom: 0.5rem;
-    padding-bottom: 1.5rem;
+    padding-bottom: 1rem;
     border-bottom: 0.0625rem solid var(--border-color);
     font-size: 0.9em;
     display: flex;

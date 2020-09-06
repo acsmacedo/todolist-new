@@ -110,6 +110,7 @@ export default {
 
   button, select, input {
     font-size: inherit;
+    border-radius: 0;
   }
 
   .app {

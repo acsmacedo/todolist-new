@@ -64,12 +64,12 @@ export default {
     padding: 0.5rem 0.5rem;
     border: 0.0625rem solid var(--border-color);
     border-left-width: 0.4rem;
-    margin: 0.75rem 0;
+    margin: 0.5rem 0;
     color: var(--text-active);
     background-color: var(--background-body);
     span {
       font-size: 0.6em;
-      margin-bottom: 0.2rem;
+      line-height: 1.5em;
     }
     p {
       font-size: 0.9em;

@@ -55,8 +55,7 @@ export default {
 <style scoped lang="scss">
   .filter-sort {
     flex-direction: row;
-    margin-top: 1rem;
-    margin-bottom: -0.5rem;
+    margin-top: 0.5rem;
     font-size: 0.9em;
     select, button {
       background-color: var(--background-body);

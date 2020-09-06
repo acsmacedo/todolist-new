@@ -37,9 +37,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .task-list {
-    margin-top: 0.5rem;
-  }
 
   .list-empty {
     text-align: center;
@@ -48,7 +45,6 @@ export default {
     color: var(--border-color);
     max-width: 80%;
     margin: 0 auto;
-    margin-top: 0.5rem;
     @media (min-width: 500px) {
       max-width: 300px;
     }
