@@ -86,7 +86,7 @@ export default new Vuex.Store({
       container.appendChild(msg);
       setTimeout(() => {
         container.removeChild(msg);
-      }, 2000)
+      }, 2500)
     },
     removeTask(state, id) {
       const filtro = state.taskList.filter( item => item.id !== id );
@@ -98,7 +98,7 @@ export default new Vuex.Store({
           container.appendChild(msg);
           setTimeout(() => {
             container.removeChild(msg);
-          }, 2000)
+          }, 2500)
         }  
       })
       state.taskList = filtro;
@@ -115,11 +115,22 @@ export default new Vuex.Store({
       state.taskList[filtro].isWarning = false;
       state.taskList[filtro].isCheck = !state.taskList[filtro].isCheck;
 
+      const msg = document.createElement('div');
+      const container = document.querySelector('.msg');
+      msg.innerText = state.taskList[filtro].isCheck ? 
+        `A tarefa "${ state.taskList[filtro].description }" foi concluída!` :
+        `A tarefa "${ state.taskList[filtro].description }" está novamente pendente!`;
+      container.appendChild(msg);
+      setTimeout(() => {
+        container.removeChild(msg);
+      }, 2500)
+
       if (!state.taskList[filtro].isCheck) {
         const tempNow = new Date(Date.now());
         const stringNow = `${tempNow.getUTCFullYear()}, ${tempNow.getUTCMonth() + 1}, ${tempNow.getUTCDate()}`
         const now = (new Date (stringNow)).getTime();
         const isWarning = now <= state.taskList[filtro].deadlineNumbers ? false : true;
+        
         if (state.taskList[filtro].deadlineNumbers == null) { 
           state.taskList[filtro].isWarning = false;
         } else {
@@ -137,7 +148,8 @@ export default new Vuex.Store({
       state.sort = sort;
     },
     changeInvert(state) {
-      document.querySelector('.filter-sort button').classList.toggle('active');
+      document.querySelector('.filter-sort button').classList.toggle('active')
+      document.querySelector('.filter-sort button').blur();
       state.invert = !state.invert;
     },
     changeModeColor(state) {
@@ -150,6 +162,7 @@ export default new Vuex.Store({
         const tempNow = new Date(Date.now());
         const stringNow = `${tempNow.getUTCFullYear()}, ${tempNow.getUTCMonth() + 1}, ${tempNow.getUTCDate()}`
         const now = (new Date (stringNow)).getTime();
+
         if (item.deadlineNumbers == null) { 
           item.isWarning = false;
         } else {

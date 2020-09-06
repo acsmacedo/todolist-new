@@ -29,6 +29,7 @@ export default {
       } else {
         e.target.classList.remove('active');
       }
+      e.target.blur();
     }
   }
 }
@@ -56,6 +57,8 @@ export default {
       }
       &:focus {
         border: 0.0625rem solid var(--text-active);
+        color: var(--text-active);
+        background-color: var(--background-items);
       }
       &.active {
         color: var(--text-active);
@@ -76,13 +79,17 @@ export default {
     }
     button {
       width: 100%;
-      border: 0.0625rem solid var(--text-active);
+      border: 0.0625rem solid var(--border-color);
       background-color: var(--border-color);
       color: var(--text-active);
       text-transform: uppercase;
       font-weight: 700;
       font-size: 0.75em;
       letter-spacing: 0.1em;
+      &:focus {
+        background-color: var(--border-color);
+        border: 0.0625rem solid var(--border-color);
+      }
     }
     input[type="date"] {
       width: calc(50% - 0.25rem);
@@ -99,16 +106,22 @@ export default {
         color: var(--border-color);
       }
       &::after {
-        content: "\1F4C5";
-        color: var(--border-color);
-        position: absolute;
-        right: 0.8rem;
-        font-size: 0.8em;
+        @media (min-device-width: 1024px) {
+          content: "\1F4C5";
+          color: var(--border-color);
+          position: absolute;
+          right: 0.8rem;
+          font-size: 0.8em;
+        }
       }
       &::-webkit-calendar-picker-indicator {
-        opacity: 0;
-        margin-left: 0rem;
-        z-index: 10;
+        margin: 0;
+        @media (min-device-width: 1024px) {
+          opacity: 0;
+          
+          margin-left: 0rem;
+          z-index: 10;
+        }
       }
       &.active {
         color: var(--text-active);
@@ -127,8 +140,8 @@ export default {
       }  
     }
     @media (min-width: 600px) {
-      input[type="date"] {
-        width: 170px;
+      input[type="date"], select {
+        width: 130px;
         margin-left: 0.5rem;
         margin-bottom: 0;
         margin-top: 0;
@@ -137,14 +150,8 @@ export default {
         width: 100px;
         margin-left: 0.5rem;
       }
-      select {
-        width: 120px;
-        margin-left: 0.5rem;
-        margin-bottom: 0;
-        margin-top: 0;
-      }
       input[type="text"] {
-        width: calc(100% - 390px - 1.5rem);
+        width: calc(100% - 360px - 1.5rem);
       }
     }
   }

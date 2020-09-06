@@ -35,7 +35,7 @@ export default {
       margin-bottom: 1rem;
     }
     > p {
-      max-width: 80%;
+      max-width: 100%;
       margin: 0 auto;
       font-size: 0.9em;
       line-height: 1.5em;
