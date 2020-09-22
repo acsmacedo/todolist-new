@@ -79,6 +79,9 @@ export default {
     select {
       margin-right: 0.5rem;
       width: calc(37.5% - 0.5rem);
+      border-radius: 0;
+      background-image: none;
+      background-color: var(--background-body);
       option {
         color: var(--text-active);
         background-color: var(--background-items);

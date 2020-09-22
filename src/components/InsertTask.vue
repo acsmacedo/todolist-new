@@ -75,6 +75,9 @@ export default {
       width: calc(50% - 0.25rem);
       margin: 0.5rem 0;
       margin-left: 0.5rem;
+      border-radius: 0;
+      background-image: none;
+      background-color: var(--background-body);
       option {
         color: var(--text-active);
       }

@@ -59,10 +59,10 @@ export default new Vuex.Store({
       const description = tempDescription ? tempDescription : 'Tarefa sem nome';
       
       
-      const tempDate = e.target.deadline.value.replace(/-/g, ',');
-      const date = (new Date(tempDate)).toLocaleDateString();
-      const deadlineNumbers = e.target.deadline.value ? (new Date(tempDate)).getTime() : Infinity;
-      const deadline =  e.target.deadline.value ? date : '';
+      const tempDate = e.target.deadline.value;
+      const date = tempDate.split('-');
+      const deadlineNumbers = tempDate ? Date.UTC(date[0], Number(date[1]) - 1, date[2]) : Infinity;
+      const deadline =  tempDate ? `${date[2]}/${date[1]}/${date[0]}` : '';
       
       const label = e.target.label.value;
 
@@ -70,10 +70,9 @@ export default new Vuex.Store({
       const isCheck = false;
 
       const tempNow = new Date(Date.now());
-      const stringNow = `${tempNow.getUTCFullYear()}, ${tempNow.getUTCMonth() + 1}, ${tempNow.getUTCDate()}`
-      const now = (new Date (stringNow)).getTime();
+      const now = Date.UTC(tempNow.getUTCFullYear(), tempNow.getUTCMonth(), tempNow.getUTCDate());
       const isWarning = now <= deadlineNumbers ? false : true;
-      
+  
       const task = { id, description, deadline, deadlineNumbers, label, isImportant, isCheck, isWarning };
 
       state.taskList.push(task);
