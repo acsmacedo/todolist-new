@@ -72,6 +72,7 @@ export default {
       width: 100%;
     }
     select {
+      -webkit-appearance: none;
       width: calc(50% - 0.25rem);
       margin: 0.5rem 0;
       margin-left: 0.5rem;

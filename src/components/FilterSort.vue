@@ -77,6 +77,7 @@ export default {
       }
     }
     select {
+      -webkit-appearance: none;
       margin-right: 0.5rem;
       width: calc(37.5% - 0.5rem);
       border-radius: 0;

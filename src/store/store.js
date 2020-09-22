@@ -160,8 +160,7 @@ export default new Vuex.Store({
     updateWarning(state) {
       state.taskList.forEach( item => {
         const tempNow = new Date(Date.now());
-        const stringNow = `${tempNow.getUTCFullYear()}, ${tempNow.getUTCMonth() + 1}, ${tempNow.getUTCDate()}`
-        const now = (new Date (stringNow)).getTime();
+        const now = Date.UTC(tempNow.getUTCFullYear(), tempNow.getUTCMonth(), tempNow.getUTCDate());
 
         if (item.deadlineNumbers == null) { 
           item.isWarning = false;
