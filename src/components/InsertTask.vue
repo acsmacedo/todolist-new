@@ -1,7 +1,7 @@
 <template>
   <form class="form" v-on:submit="insertTask">
     <input type="text" id="description" placeholder="Digite a sua tarefa..." autocomplete="off" v-on:change="changeInputActive">
-    <input type="date" id="deadline" v-on:change="changeInputActive">
+    <input type="date" id="deadline" v-on:change="changeInputActive" placeholder="Prazo: AAAA-MM-DD">
     <select id="label" v-on:change="changeInputActive">
       <option value="">Etiqueta</option>
       <option value="color7">Vermelho</option>
@@ -54,6 +54,7 @@ export default {
       position: relative;
       &::placeholder {
         color: var(--border-color);
+        opacity: 1;
       }
       &.active {
         color: var(--text-active);
@@ -70,6 +71,7 @@ export default {
     }
     input[type="text"] {
       width: 100%;
+      -webkit-appearance: none;
     }
     select {
       -webkit-appearance: none;
@@ -84,6 +86,7 @@ export default {
       }
     }
     button {
+      -webkit-appearance: none;
       width: 100%;
       border: 0.0625rem solid var(--border-color);
       background-color: var(--border-color);
@@ -98,6 +101,7 @@ export default {
       }
     }
     input[type="date"] {
+      -webkit-appearance: none;
       width: calc(50% - 0.25rem);
       margin: 0.5rem 0;
       &::-webkit-datetime-edit-day-field,

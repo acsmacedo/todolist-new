@@ -41,8 +41,10 @@ export default new Vuex.Store({
       }
       if (state.sort === 'deadline') {
         const tempFilter = [...getters.filter];
-        tempFilter.sort((a,b) => (a.deadlineNumbers > b.deadlineNumbers) ? 1 : ((b.deadlineNumbers > a.deadlineNumbers) ? -1 : 0));
-        return tempFilter.reverse();
+        const deadlineNull = tempFilter.filter( item => item.deadlineNumbers === null);
+        const deadlineNotNull = tempFilter.filter( item => item.deadlineNumbers !== null);
+        deadlineNotNull.sort((a,b) => (a.deadlineNumbers > b.deadlineNumbers) ? 1 : ((b.deadlineNumbers > a.deadlineNumbers) ? -1 : 0));
+        return [...deadlineNotNull, ...deadlineNull];
       }
     },
     invert(state, getters) {
